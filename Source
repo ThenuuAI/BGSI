@@ -38,6 +38,44 @@ UniversalSection:AddButton({
     end
 })
 
+-- Add a button to execute the "Vynixu" script in the "Universal Scripts" tab
+UniversalSection:AddButton({
+    Name = "Vynixu",
+    Callback = function()
+        print("Vynixu button pressed")
+        local games = {
+            [{606849621}] = "https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Jailbreak/Script.lua",
+            [{8982709021}] = "https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/YouTube%20Life/Auto%20Farm.lua",
+            [{537413528}] = "https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Build%20A%20Boat%20For%20Treasure/Script.lua",
+            -- Add more games and their scripts here
+        }
+        for ids, url in next, games do
+            if table.find(ids, game.PlaceId) then
+                loadstring(game:HttpGet(url))()
+                break
+            end
+        end
+    end
+})
+
+-- Add a button to execute the "Darkhub" script in the "Universal Scripts" tab
+UniversalSection:AddButton({
+    Name = "Darkhub",
+    Callback = function()
+        print("Darkhub button pressed")
+        loadstring(game:HttpGet("https://darkhub.xyz/remote-script.lua", true))()
+    end
+})
+
+-- Add a button to execute the "OwlHub" script in the "Universal Scripts" tab
+UniversalSection:AddButton({
+    Name = "OwlHub",
+    Callback = function()
+        print("OwlHub button pressed")
+        loadstring(game:HttpGet("https://athoi21.xyz/owlhub"))()
+    end
+})
+
 -- Create a tab called "Blade Ball"
 local Tab = Window:MakeTab({
     Name = "Blade Ball",  -- Set the tab name here
