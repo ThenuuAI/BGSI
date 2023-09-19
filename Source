@@ -29,6 +29,15 @@ UniversalSection:AddButton({
     end
 })
 
+-- Add a button to execute the "Dark Dex" script in the "Universal Scripts" tab
+UniversalSection:AddButton({
+    Name = "Dark Dex",
+    Callback = function()
+        print("NukeCity Gui button pressed")
+        loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
+    end
+})
+
 -- Add a button to execute the "NukeCity Gui" script in the "Universal Scripts" tab
 UniversalSection:AddButton({
     Name = "NukeCity Gui",
