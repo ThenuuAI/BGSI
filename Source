@@ -1,3 +1,45 @@
+-- Notification function
+local function createNotification(message, duration)
+    local notification = Instance.new("ScreenGui")
+    notification.Name = "Notification"
+
+    local frame = Instance.new("Frame")
+    frame.Name = "Frame"
+    frame.Size = UDim2.new(0, 400, 0, 80)
+    frame.Position = UDim2.new(0.5, -200, 0.5, -40)  -- Centered on the screen
+    frame.BackgroundColor3 = Color3.new(1, 0, 0)  -- Red background
+    frame.BorderColor3 = Color3.new(1, 0, 0)
+    frame.BorderSizePixel = 3
+    frame.Parent = notification
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Name = "TextLabel"
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.Position = UDim2.new(0, 0, 0, 0)
+    textLabel.BackgroundColor3 = Color3.new(1, 0, 0)  -- Red background
+    textLabel.Text = message
+    textLabel.Font = Enum.Font.SourceSansBold
+    textLabel.TextSize = 20  -- Adjust the text size as needed
+    textLabel.TextColor3 = Color3.new(0, 0, 0)  -- Black text
+    textLabel.Parent = frame
+
+    notification.Parent = game.CoreGui
+    wait(duration)
+    notification:Destroy()
+end
+
+-- Create a separate thread for the notification
+local notificationThread = coroutine.create(function()
+    createNotification("Script made by Thenuu (This will disappear in 8 seconds)", 8)
+end)
+
+-- Start executing the notification thread
+coroutine.resume(notificationThread)
+
+-- Wait for 4 seconds before loading OrionLib
+wait(4)
+
+-- Load OrionLib in the main thread
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 -- Create a window with the desired name
@@ -26,6 +68,15 @@ UniversalSection:AddButton({
     Callback = function()
         print("Infinite Yield button pressed")
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
+})
+
+-- Add a button to execute the "Bypassed Dark Dex V3" script in the "Universal Scripts" tab
+UniversalSection:AddButton({
+    Name = "Bypassed Dark Dex V3",
+    Callback = function()
+        print("Bypassed Dark Dex V3 button pressed")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
     end
 })
 
