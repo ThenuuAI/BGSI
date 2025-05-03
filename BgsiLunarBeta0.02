@@ -29,7 +29,7 @@ game.StarterGui:SetCore("SendNotification", {
 })
 
 -- Copy to clipboard
-setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/ThenuuAI/BGSI/refs/heads/main/BgsiLunarBeta0.02\"))()")
+setclipboard("loadstring(game:HttpGet(\"https://raw.githubusercontent.com/ThenuuAI/BGSI/refs/heads/main/BgsiLunarBeta0.1\"))()")
 
 -- Optional clipboard notice
 game.StarterGui:SetCore("SendNotification", {
