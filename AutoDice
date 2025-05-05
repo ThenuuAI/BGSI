@@ -1,0 +1,33 @@
+local autoRolling = true
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local RemoteFolder = ReplicatedStorage
+    :WaitForChild("Shared")
+    :WaitForChild("Framework")
+    :WaitForChild("Network")
+    :WaitForChild("Remote")
+
+local RemoteFunction = RemoteFolder:WaitForChild("Function")
+local RemoteEvent = RemoteFolder:WaitForChild("Event")
+
+local function rollDice()
+    RemoteFunction:InvokeServer("RollDice", "Dice") --- Change Dice to whatever dice u want
+end
+
+local function claimTile()
+    RemoteEvent:FireServer("ClaimTile")
+end
+
+spawn(function()
+    while true do
+        if autoRolling then
+            rollDice()
+            wait(1)
+            claimTile()
+            wait(0.5)
+        else
+            wait(0.5) 
+        end
+    end
+end) 
