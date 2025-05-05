@@ -1,0 +1,41 @@
+local Button = Instance.new("TextButton")
+Button.Text = "Start Auto Robot Claw"
+Button.Size = UDim2.new(0.12, 0, 0.05, 0)
+Button.Position = UDim2.new(0.88, 0, 0.1, 0)
+Button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+Button.TextColor3 = Color3.new(1, 1, 1)
+Button.Font = Enum.Font.SourceSansBold
+Button.TextScaled = true
+Button.Active = true
+Button.Draggable = true
+Button.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("ScreenGui")
+
+local farming = false
+
+Button.MouseButton1Click:Connect(function()
+    farming = not farming
+    Button.Text = farming and "Stop Auto Robot Claw" or "Start Auto Robot Claw"
+    Button.BackgroundColor3 = farming and Color3.fromRGB(170, 0, 0) or Color3.fromRGB(0, 170, 0)
+end)
+
+task.spawn(function()
+    while true do
+        if farming then
+            local args = {[1] = "SkipMinigameCooldown",[2] = "Robot Claw"}game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+            local args = {[1] = "StartMinigame",[2] = "Robot Claw",[3] = "Insane"}game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+            task.wait(1)
+            for _, item in pairs(game.Players.LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("ScreenGui"):GetChildren()) do
+                if item:IsA("Instance") and item.Name:match("^ClawItem") then
+                    local cleanId = item.Name:gsub("^ClawItem", "")
+                    local args = {[1] = "GrabMinigameItem",[2] = cleanId}game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+                    local args = {[1] = "FinishMinigame"}game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("Event"):FireServer(unpack(args))
+                    task.wait(0.5)
+                end
+                end
+
+            task.wait(1)
+        else
+            task.wait(0.1)
+        end
+    end
+end)  
