@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/ThenuuAI/Roblox-scripts/main/Source', true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThenuuAI/BGSI/refs/heads/main/BgsiLunarBeta0.02"))()
